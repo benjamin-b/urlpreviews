@@ -1,0 +1,121 @@
+
+
+// Spinner
+@include keyframes(flipper) {
+	from{-webkit-transform: rotateY(0deg);}
+  to {-webkit-transform: rotateY(-360deg);}
+}
+@mixin flipper {
+	@include animate(flipper, 2s, infinite, normal);
+}
+
+
+//Shake
+@include keyframes (shake) {
+    0%, 100% {transform: translateX(0);}
+    10%, 30%, 50% {transform: translateX(10px);}
+    20%, 40%, 60% {transform: translateX(-10px);}
+}
+@mixin shake {
+	@include animate(shake, 1s, 1, both);
+}
+
+// removed-item-animation
+@include keyframes(removed-item-animation) {
+	0% {
+		opacity: 1;
+		transform: rotateZ(0);
+	}
+	100% {
+		opacity:0;
+		transform : translateY(600px) rotateZ(90deg);
+	}
+}
+@mixin remove-item {
+	@include animate(remove-item, 1s, 1, forwards);
+	transition: cubic-bezier(0.55, -0.04, 0.91, 0.94);
+	/*transform origin is moved to the bottom left corner*/
+	transform-origin: 0% 100%;
+}
+
+// Blinker
+@include keyframes(blinker) {
+	from {
+		opacity:1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+@mixin blinker {
+	@include animate(blinker, 1s, infinite, normal);
+}
+
+
+// Wave
+@include keyframes(wave) {
+	0% {
+		transform: scale(0.8);
+		opacity: 0.0;
+	}
+	25%{
+		opacity:0.0;
+	}
+	50%{
+		opacity:1.0;
+	}
+	75%{
+		opacity:1.0;
+	}
+	100%{
+		transform:scale(1.3);
+		opacity: 0.0;
+	}
+}
+@mixin wave {
+	@include animate(wave, 2s, infinite, normal);
+}
+
+// pulsate
+@include keyframes(pulsate) {
+	from {
+		width: 1px;
+		height: 1px;
+		margin: 0;
+		opacity: 1;
+	}
+
+	to {
+		width: 50px;
+		height: 50px;
+		margin: -25px;
+		opacity: 0;
+	}
+}
+
+@mixin pulsate {
+	@include animate(pulsate, 0.6s, infinite, normal);
+}
+
+
+// Animation Classes
+.shake {
+	 @include shake;
+}
+.wave{
+	@include wave;
+}
+.flipper{
+	@include flipper;
+}
+.blinker{
+	@include blinker;
+}
+.remove-item{
+	@include remove-item;
+}
+.pulsate {
+    @include pulsate;
+    border: 5px solid #000;
+    border-radius: 50px;
+}

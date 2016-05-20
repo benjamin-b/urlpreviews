@@ -1,0 +1,15 @@
+// The very basic page styling
+
+
+
+body, html{
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: $font;
+    background-color: #fff;
+   /*  -webkit-user-select: none; */
+}
