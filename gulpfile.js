@@ -1,6 +1,8 @@
 var gulp      = require('gulp'),
     connect   = require('gulp-connect'),
-    sass      = require('gulp-sass');
+    sass      = require('gulp-sass'),
+    cssmin    = require('gulp-cssmin'),
+    rename    = require('gulp-rename');
 
 gulp.task('webserver', function() {
     connect.server({
@@ -11,6 +13,9 @@ gulp.task('webserver', function() {
 gulp.task('sass', function () {
   gulp.src('./scss/main.scss')
     .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./css'))
+    .pipe(rename({suffix: '-min'}))
+    .pipe(cssmin())
     .pipe(gulp.dest('./css'))
     .pipe(connect.reload());
 });
